@@ -1,3 +1,4 @@
+from typing import Optional
 from fastapi import Body, FastAPI 
 from pydantic import BaseModel
 
@@ -11,8 +12,9 @@ app = FastAPI() # Create an instance
 
 class Post(BaseModel):
     title: str 
-    body: str
-
+    body: str = "" # we can set body as optional field
+    rating: Optional[int] = None # fully optional field 
+    
 # Path (or route) operation 
 @app.get("/") # decorator "magic to the function"
 # app.http method(path)
